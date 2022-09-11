@@ -97,7 +97,7 @@ body{
         else
         {
               echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>You\'re not logged in :( </strong>Please LogIn if you wish to edit!!
+              <strong>YOops!! Looks like you\'re not logged in :( </strong>Please LogIn if you wish to edit!!
               <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
                   <span aria-hidden="true">&times;</span>
               </button>

@@ -51,7 +51,6 @@ body{
                 {
                     echo '<div class="container mx-auto" style="height : 150px;">
                             <h2 class="text-center mt-3">No Results Found for &#8221'. $searchTerm .'&#8221</h2>
-                            <img src="admin/images/noResult.jpg" class="card-img-top" alt="noResults">
                          </div>';
                 }
              ?>
