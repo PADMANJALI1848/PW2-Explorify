@@ -8,6 +8,7 @@ body{
     background-image:linear-gradient(to top right , rgba(48,152,152,0.5) , rgba(255,159,0,0.5));
     width:100%;
     height:100vh;
+    background-attachment:fixed;
     background-size:cover;
     background-position:center;
     position: relative;
@@ -48,7 +49,10 @@ body{
                 }
                 if($noResult)
                 {
-                    echo '<h2 class="text-center mt-3">No Results Found for '. $searchTerm .'</h2>';
+                    echo '<div class="container mx-auto" style="height : 150px;">
+                            <h2 class="text-center mt-3">No Results Found for &#8221'. $searchTerm .'&#8221</h2>
+                            <img src="admin/images/noResult.jpg" class="card-img-top" alt="noResults">
+                         </div>';
                 }
              ?>
         </div>

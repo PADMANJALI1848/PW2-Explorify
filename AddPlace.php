@@ -5,7 +5,7 @@
 
 <style>
 .form{
-  position : relavtive;
+  position : relative;
   padding : 50px 40px;
   background : #fff;
   border-radius : 20px;
@@ -18,6 +18,7 @@ body{
     background-image:linear-gradient(to top right , rgba(48,152,152,0.5) , rgba(255,159,0,0.5));
     width:100%;
     height:100vh;
+    background-attachment : fixed;
     background-size:cover;
     background-position:center;
     position: relative;
@@ -42,35 +43,39 @@ body{
         $method = $_SERVER['REQUEST_METHOD'];
         if($method == 'POST')
         {
-          $email = $_POST['email'];
-          $pname = $_POST['p_name'];
-          $descr = $_POST['descr'];
-          $address = $_POST['address'];
-          $pimg = $_POST['p_img'];
-          $catname = $_POST['category'];
-          $catsql = "SELECT * FROM `CATEGORIES` WHERE CAT_NAME = '$catname'";
-          $catresult = mysqli_query($con , $catsql);
-          $catrow = mysqli_fetch_assoc($catresult);
-          $catid = $catrow['cat_id'];
-          $sql = "INSERT INTO `PLACES`(p_name , cat_id , descr , address , p_img) VALUES ('$pname' ,  '$catid' , '$descr' , '$address' , '$pimg')";
-          $result = mysqli_query($con , $sql);
-          $showAlert = true;
-          if($showAlert)
-          {
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Successfully added the place!!</strong> You can now view it!!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>';
-          }
+            $id = $_SESSION['userid'];
+            $email = $_POST['email'];
+            $pname = $_POST['p_name'];
+            $descr = $_POST['descr'];
+            $address = $_POST['address'];
+            $pimg = $_POST['p_img'];
+            $catname = $_POST['category'];
+            $catsql = "SELECT * FROM `CATEGORIES` WHERE CAT_NAME = '$catname'";
+            $catresult = mysqli_query($con , $catsql);
+            $catrow = mysqli_fetch_assoc($catresult);
+            $catid = $catrow['cat_id'];
+            $sql = "INSERT INTO `PLACES`(p_name , cat_id , descr , address , p_img , userid) VALUES ('$pname' ,  '$catid' , '$descr' , '$address' , '$pimg' , '$id')";
+            $result = mysqli_query($con , $sql);
+            $showAlert = true;
+            if($showAlert)
+            {
+              echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>Successfully added the place!!</strong> You can now view it!!
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+            }
         }
     ?>
 
-
-    <div class="container form">
+<?php
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){ 
+    echo '<div class="container form">
         <h2>Fill out the below form to Add a place of your choice!!</h2>
         <div class="row justify-content-center my-5">
             <div class="col-lg-6">
-              <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
+              <form action="'.$_SERVER['REQUEST_URI'].'" method="POST">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control mb-3" id="email" required name="email" placeholder="Enter your email">
 
@@ -78,8 +83,8 @@ body{
                 <input type="text" class="form-control mb-3" id="name" required name="p_name" placeholder="Enter Name">
 
                 <label for="category" class="form-label">Choose a category you want to add under : </label>
-                <select name="category" class="form-select mb-3" id="category">
-               <?php 
+                <select name="category" class="form-select mb-3" id="category">'.
+               
                     $sql1 = "SELECT * FROM `CATEGORIES`";
                     $result = mysqli_query($con , $sql1);
                     while($row = mysqli_fetch_assoc($result)){ 
@@ -88,8 +93,7 @@ body{
                             echo 
                                     '<option value="'. $catname .'">'. $catname .'</option>';
                         }
-                ?>
-                </select>
+                echo '</select>
                 <br>
                 <label for="description" class="form-label">Description</label>
                 <textarea name="descr" class="form-control mb-3" style="height:140px;" id="description" placeholder="Description of the place"></textarea>
@@ -105,9 +109,24 @@ body{
               </form>
             </div>
         </div>
-    </div>
-    
+    </div>';
+    }
+    else
+    {
+       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Oops!! Looks like you\'re not logged in :(</strong> Please login to add a place of your choice
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>';
+    }
+?>  
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    $('.alert').alert()
+  })
+</script>
 <?php
     include('templates/footer.php');
 ?>

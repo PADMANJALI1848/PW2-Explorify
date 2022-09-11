@@ -107,7 +107,7 @@
                 }
                 else
                 {
-                    echo '<div class="container mx-auto" style="height : 150px;">
+                    echo '<div class="container mx-auto text-center" style="height : 150px;">
                             <strong>You\'re not logged in :( !!</strong> Login to add a review.
                          </div>';
                 }
@@ -141,6 +141,12 @@
                         </div>
                     </div>';
             }
+            if($noResult)
+            {
+                echo '<div class="container mx-auto text-center" style="height : 150px;">
+                         <strong>No Reviews yet!!</strong> Be the first one add a review.
+                     </div>';
+            }
         ?>
     </div>
 
@@ -166,7 +172,7 @@
     $('.alert').alert()
   })
 </script>
-
+ 
 <?php 
     include('templates/footer.php');
 ?>
