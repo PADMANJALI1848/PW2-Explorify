@@ -25,7 +25,7 @@ body{
              
     <div class="container">
         <?php $searchTerm = $_GET['search_term']; ?>
-        <h2 class="text-center mt-3">Results for <?php echo $searchTerm ?></h2>
+        <h2 class="text-center mt-3" style="color : #151C35;">Results for &#8221<em><?php echo $searchTerm; ?></em>&#8221</h2>
         <div class="row">
             <?php
                 $sql1 = "SELECT * FROM `PLACES` WHERE MATCH (`p_name` , `descr` , `address`) against ('$searchTerm')";
@@ -50,7 +50,7 @@ body{
                 if($noResult)
                 {
                     echo '<div class="container mx-auto" style="height : 150px;">
-                            <h2 class="text-center mt-3">No Results Found for &#8221'. $searchTerm .'&#8221</h2>
+                            <h2 class="text-center mt-3"  style="color : #151C35;>No Results Found for &#8221<em>'. $searchTerm .'</em>&#8221</h2>
                          </div>';
                 }
              ?>
