@@ -17,6 +17,7 @@ body{
     background-image:linear-gradient(to top right , rgba(48,152,152,0.5) , rgba(255,159,0,0.5));
     background-size:cover;
     background-position:center;
+    background-attachment:fixed;
     width:100%;
     height : 100vh;
   }
@@ -44,7 +45,8 @@ body{
           {
             $sql1 = "SELECT userid from `PLACES` where P_ID = '$pid'";
             $res = mysqli_query($con , $sql1);
-            $id = $res['userid'];
+            $row = mysqli_fetch_assoc($res);
+            $id = $row['userid'];
             if($_SESSION['userid'] != $id)
             {
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
