@@ -48,6 +48,7 @@ body{
     background-image:linear-gradient(to top right , rgba(48,152,152,0.5) , rgba(255,159,0,0.5));
     background-size:cover;
     background-position:center;
+    background-attachment:fixed;
   }
 </style>
 
