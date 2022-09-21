@@ -83,7 +83,8 @@ body{
                 <input type="text" class="form-control mb-3" id="name" required name="p_name" placeholder="Enter Name">
 
                 <label for="category" class="form-label">Choose a category you want to add under : </label>
-                <select name="category" class="form-select mb-3" id="category">'.
+                <select name="category" class="form-select mb-3" id="category" required="">
+                    <option value="">--Choose category--</option>'.
                
                     $sql1 = "SELECT * FROM `CATEGORIES`";
                     $result = mysqli_query($con , $sql1);
@@ -99,10 +100,10 @@ body{
                 <textarea name="descr" class="form-control mb-3" style="height:140px;" id="description" placeholder="Description of the place"></textarea>
 
                 <label for="address" class="form-label">Address</label>
-                <textarea name="address" class="form-control mb-3" id="address" style="height:140px;" placeholder="Address of the place"></textarea>
+                <textarea name="address" class="form-control mb-3" id="address" required style="height:140px;" placeholder="Address of the place"></textarea>
 
                 <label for="image" class="form-label">Image</label>
-                <textarea name="p_img" class="form-control mb-3" id="image" style="height:140px;" placeholder="Link of the images"></textarea>
+                <textarea name="p_img" class="form-control mb-3" id="image" required style="height:140px;" placeholder="Link of the images"></textarea>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
