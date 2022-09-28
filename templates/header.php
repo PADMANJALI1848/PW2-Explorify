@@ -25,21 +25,19 @@ session_start();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <title>Explorify</title>
-
 <style>
 
 #search{
     width: 500px;
-    margin: 150px auto;
-    
+    margin: 150px auto;  
 }
 
 #caption{
   margin-top: 20px;
   text-align: center;
   font-family: 'Corinthia', cursive;
-font-family: 'Fuzzy Bubbles', cursive;
-color: brown;
+  font-family: 'Fuzzy Bubbles', cursive;
+  color: brown;
 }
 
 

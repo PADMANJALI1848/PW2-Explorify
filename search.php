@@ -49,15 +49,12 @@ body{
                 }
                 if($noResult)
                 {
-                    echo '<div class="container mx-auto" style="height : 150px;">
-                            <h2 class="text-center mt-3"  style="color : #151C35;>No Results Found for &#8221<em>'. $searchTerm .'</em>&#8221</h2>
-                         </div>';
+                    echo '<h2 class="text-center mt-3"  style="color : #151C35;">No Results Found for '. $searchTerm .'</h2>';
                 }
              ?>
         </div>
     </div>
 
-    
-  <?php
-    include("templates/footer.php");
+<?php
+    //include("templates/footer.php");
 ?>
